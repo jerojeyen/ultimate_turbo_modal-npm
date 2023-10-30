@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "The ultimate Turbo / Stimulus / Hotwire modal window for Rails",
   "main": "dist/modal_controller.min.js",
+  "module": "dist/modal_controller.min.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c"
   },

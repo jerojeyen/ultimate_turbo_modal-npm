@@ -7,6 +7,10 @@ export default {
     file: 'dist/ultimate_turbo_modal.min.js',
     format: 'esm'
   },
+  external: [
+    // This makes us not inline dependencies.
+    /node_modules/
+  ],
   inlineDynamicImports: true,
   plugins: [
     resolve(),
