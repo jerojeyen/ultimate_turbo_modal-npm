@@ -10,6 +10,15 @@ function setupUltimateTurboModal(application) {
     if (message == "hide") window.modal?.hide();
     if (message == "close") window.modal?.hide();
   };
+
+  // Escape modal from the backend on redirects
+  document.addEventListener("turbo:frame-missing", function (event) {
+    if (event.detail.response.redirected &&
+      event.target == document.querySelector("turbo-frame#modal")) {
+      event.preventDefault()
+      event.detail.visit(event.detail.response)
+    }
+  })
 }
 
 export default setupUltimateTurboModal;
