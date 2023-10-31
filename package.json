@@ -2,8 +2,8 @@
   "name": "ultimate_turbo_modal",
   "version": "1.0.1",
   "description": "The ultimate Turbo / Stimulus / Hotwire modal window for Rails",
-  "main": "dist/modal_controller.min.js",
-  "module": "dist/modal_controller.min.js",
+  "main": "dist/ultimate_turbo_modal.min.js",
+  "module": "dist/ultimate_turbo_modal.min.js",
   "files": [
     "dist"
   ],
