@@ -4,7 +4,7 @@ import { enter, leave } from "el-transition"
 
 export default class extends Controller {
   static targets = ["modal", "overlay", "container", "innerModal"]
-  static values = { advanceHistoryUrl: String }
+  static values = { advanceUrl: String }
 
   connect() {
     let _this = this
@@ -28,9 +28,9 @@ export default class extends Controller {
     enter(this.containerTarget)
     this.#lockBodyScroll()
 
-    if (this.advanceHistoryUrlValue && !this.#hasHistoryAdvanced()) {
+    if (this.advanceUrlValue && !this.#hasHistoryAdvanced()) {
       this.#setHistoryAdvanced()
-      history.pushState({}, "", this.advanceHistoryUrlValue)
+      history.pushState({}, "", this.advanceUrlValue)
     }
   }
 
