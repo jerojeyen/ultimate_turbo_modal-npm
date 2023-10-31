@@ -1,4 +1,5 @@
 import UltimateTurboModalController from './modal_controller';
+import './styles/vanilla.css';
 
 function setupUltimateTurboModal(application) {
   // Register the Stimulus controller
