@@ -1,4 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
+import css from 'rollup-plugin-css-only';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
@@ -14,6 +15,7 @@ export default {
   inlineDynamicImports: true,
   plugins: [
     resolve(),
-    terser()
+    terser(),
+    css({ output: 'ultimate_turbo_modal.min.css' })
   ]
 };
