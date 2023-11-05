@@ -3,7 +3,7 @@ import { Turbo } from "@hotwired/turbo-rails"
 import { enter, leave } from "el-transition"
 
 export default class extends Controller {
-  static targets = ["modal", "overlay", "container", "innerModal"]
+  static targets = ["container", "content"]
   static values = { advanceUrl: String }
 
   connect() {
@@ -75,7 +75,9 @@ export default class extends Controller {
   // hide modal when clicking outside of modal
   // action: "click@window->modal#outsideModalClicked"
   outsideModalClicked(e) {
-    if (e.target == this.overlayTarget || e.target == this.innerModalTarget)
+    let clickedInsideModal = this.contentTarget.contains(e.target) || this.contentTarget == e.target
+
+    if (!clickedInsideModal)
       this.hideModal()
   }
 
