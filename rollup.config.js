@@ -16,6 +16,6 @@ export default {
   plugins: [
     resolve(),
     terser(),
-    css({ output: 'ultimate_turbo_modal.min.css' })
+    css({ output: 'index.css' })
   ]
 };
