@@ -42,6 +42,10 @@
     border-bottom-width: 1px;
   }
 
+  &[data-footer-divider="true"] .modal-footer {
+    border-top-width: 1px;
+  }
+
   &[data-padding="true"] .modal-main {
     padding: 1rem;
     padding-top: 0.5rem;
