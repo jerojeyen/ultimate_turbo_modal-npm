@@ -55,6 +55,10 @@
     display: none;
   }
 
+  &[data-close-button="false"] .modal-close {
+    display: none;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
