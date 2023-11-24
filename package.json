@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "publish": "npm install && npm run build && npm publish"
+    "release": "npm install && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
