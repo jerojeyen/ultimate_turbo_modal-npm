@@ -1,6 +1,6 @@
 {
   "name": "ultimate_turbo_modal",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The ultimate Turbo / Stimulus / Hotwire modal window for Rails",
   "main": "dist/ultimate_turbo_modal.min.js",
   "module": "dist/ultimate_turbo_modal.min.js",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "publish": "npm run build && npm publish"
+    "publish": "npm install && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
