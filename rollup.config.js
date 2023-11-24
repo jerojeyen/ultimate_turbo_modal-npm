@@ -16,6 +16,6 @@ export default {
   plugins: [
     resolve(),
     terser(),
-    css({ output: 'index.css' })
+    css({ output: 'vanilla.css' })
   ]
 };
