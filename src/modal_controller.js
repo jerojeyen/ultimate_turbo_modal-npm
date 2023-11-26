@@ -60,6 +60,10 @@ export default class extends Controller {
     this.hideModal()
   }
 
+  refreshPage() {
+    window.Turbo.visit(window.location.href, { action: "replace" })
+  }
+
   // hide modal on successful form submission
   // action: "turbo:submit-end->modal#submitEnd"
   submitEnd(e) {
