@@ -4,7 +4,10 @@ import { enter, leave } from "el-transition"
 
 export default class extends Controller {
   static targets = ["container", "content"]
-  static values = { advanceUrl: String }
+  static values = {
+    advanceUrl: String,
+    allowedClickOutsideSelector: String
+  }
 
   connect() {
     let _this = this
@@ -80,8 +83,9 @@ export default class extends Controller {
   // action: "click@window->modal#outsideModalClicked"
   outsideModalClicked(e) {
     let clickedInsideModal = this.contentTarget.contains(e.target) || this.contentTarget == e.target
+    let clickedAllowedSelector = e.target.closest(this.allowedClickOutsideSelectorValue) != null
 
-    if (!clickedInsideModal)
+    if (!clickedInsideModal && !clickedAllowedSelector)
       this.hideModal()
   }
 
