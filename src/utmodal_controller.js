@@ -83,7 +83,7 @@ export default class extends Controller {
   // action: "click@window->utmodal#outsideUTModalClicked"
   outsideUTModalClicked(e) {
     let clickedInsideUTModal = this.contentTarget.contains(e.target) || this.contentTarget == e.target
-    let clickedAllowedSelector = e.target.closest(this.allowedClickOutsideSelectorValue) != null
+    let clickedAllowedSelector = this.hasAllowedClickOutsideSelectorValue && e.target.closest(this.allowedClickOutsideSelectorValue) != null
 
     if (!clickedInsideUTModal && !clickedAllowedSelector)
       this.hideUTModal()
