@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cmer/ultimate_turbo_modal-npm.git"
+    "url": "git+https://github.com/jerojeyen/ultimate_turbo_modal-npm.git"
   },
   "keywords": [
     "hotwire",
@@ -27,9 +27,9 @@
   "author": "Carl Mercier",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cmer/ultimate_turbo_modal-npm/issues"
+    "url": "https://github.com/jerojeyen/ultimate_turbo_modal-npm/issues"
   },
-  "homepage": "https://github.com/cmer/ultimate_turbo_modal-npm#readme",
+  "homepage": "https://github.com/jerojeyen/ultimate_turbo_modal-npm#readme",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
