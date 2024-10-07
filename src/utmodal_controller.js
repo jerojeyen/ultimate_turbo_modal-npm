@@ -11,23 +11,23 @@ export default class extends Controller {
 
   connect() {
     let _this = this
-    this.showModal()
+    this.showUTModal()
 
     this.turboFrame = this.element.closest('turbo-frame');
 
     // hide modal when back button is pressed
     window.addEventListener('popstate', function (event) {
-      if (_this.#hasHistoryAdvanced()) _this.#resetModalElement()
+      if (_this.#hasHistoryAdvanced()) _this.#resetUTModalElement()
     })
 
-    window.modal = this
+    window.utmodal = this
   }
 
   disconnect() {
-    window.modal = undefined
+    window.utmodal = undefined
   }
 
-  showModal() {
+  showUTModal() {
     enter(this.containerTarget)
     this.#lockBodyScroll()
 
@@ -39,20 +39,20 @@ export default class extends Controller {
 
   // if we advanced history, go back, which will trigger
   // hiding the model. Otherwise, hide the modal directly.
-  hideModal() {
-    // Prevent multiple calls to hideModal.
+  hideUTModal() {
+    // Prevent multiple calls to hideUTModal.
     // Sometimes some events are double-triggered.
-    if (this.hidingModal) return
-    this.hidingModal = true
+    if (this.hidingUTModal) return
+    this.hidingUTModal = true
 
-    let event = new Event('modal:closing', { cancelable: true })
+    let event = new Event('utmodal:closing', { cancelable: true })
     this.turboFrame.dispatchEvent(event)
     if (event.defaultPrevented) return
 
-    this.#resetModalElement()
+    this.#resetUTModalElement()
     this.#unlockBodyScroll()
 
-    event = new Event('modal:closed', { cancelable: false })
+    event = new Event('utmodal:closed', { cancelable: false })
     this.turboFrame.dispatchEvent(event)
 
     if (this.#hasHistoryAdvanced())
@@ -60,7 +60,7 @@ export default class extends Controller {
   }
 
   hide() {
-    this.hideModal()
+    this.hideUTModal()
   }
 
   refreshPage() {
@@ -68,28 +68,28 @@ export default class extends Controller {
   }
 
   // hide modal on successful form submission
-  // action: "turbo:submit-end->modal#submitEnd"
+  // action: "turbo:submit-end->utmodal#submitEnd"
   submitEnd(e) {
-    if (e.detail.success) this.hideModal()
+    if (e.detail.success) this.hideUTModal()
   }
 
   // hide modal when clicking ESC
-  // action: "keyup@window->modal#closeWithKeyboard"
+  // action: "keyup@window->utmodal#closeWithKeyboard"
   closeWithKeyboard(e) {
-    if (e.code == "Escape") this.hideModal()
+    if (e.code == "Escape") this.hideUTModal()
   }
 
   // hide modal when clicking outside of modal
-  // action: "click@window->modal#outsideModalClicked"
-  outsideModalClicked(e) {
-    let clickedInsideModal = this.contentTarget.contains(e.target) || this.contentTarget == e.target
+  // action: "click@window->utmodal#outsideUTModalClicked"
+  outsideUTModalClicked(e) {
+    let clickedInsideUTModal = this.contentTarget.contains(e.target) || this.contentTarget == e.target
     let clickedAllowedSelector = e.target.closest(this.allowedClickOutsideSelectorValue) != null
 
-    if (!clickedInsideModal && !clickedAllowedSelector)
-      this.hideModal()
+    if (!clickedInsideUTModal && !clickedAllowedSelector)
+      this.hideUTModal()
   }
 
-  #resetModalElement() {
+  #resetUTModalElement() {
     leave(this.containerTarget).then(() => {
       this.turboFrame.removeAttribute("src")
       this.containerTarget.remove()
@@ -98,15 +98,15 @@ export default class extends Controller {
   }
 
   #hasHistoryAdvanced() {
-    return document.body.getAttribute("data-turbo-modal-history-advanced") == "true"
+    return document.body.getAttribute("data-turbo-utmodal-history-advanced") == "true"
   }
 
   #setHistoryAdvanced() {
-    return document.body.setAttribute("data-turbo-modal-history-advanced", "true")
+    return document.body.setAttribute("data-turbo-utmodal-history-advanced", "true")
   }
 
   #resetHistoryAdvanced() {
-    document.body.removeAttribute("data-turbo-modal-history-advanced")
+    document.body.removeAttribute("data-turbo-utmodal-history-advanced")
   }
 
   #lockBodyScroll() {
@@ -118,9 +118,9 @@ export default class extends Controller {
   }
 }
 
-Turbo.StreamActions.modal = function () {
+Turbo.StreamActions.utmodal = function () {
   const message = this.getAttribute("message")
 
-  if (message == "hide") window.modal?.hide()
-  if (message == "close") window.modal?.hide()
+  if (message == "hide") window.utmodal?.hide()
+  if (message == "close") window.utmodal?.hide()
 }
