@@ -6,7 +6,8 @@ export default class extends Controller {
   static targets = ["container", "content"]
   static values = {
     advanceUrl: String,
-    allowedClickOutsideSelector: String
+    allowedClickOutsideSelector: String,
+    disableCloseOnFormSubmit: Boolean
   }
 
   connect() {
@@ -70,7 +71,7 @@ export default class extends Controller {
   // hide modal on successful form submission
   // action: "turbo:submit-end->utmodal#submitEnd"
   submitEnd(e) {
-    if (e.detail.success) this.hideUTModal()
+    if (e.detail.success && (!hasDisableCloseOnFormSubmitValue || !disableCloseOnFormSubmitValue)) this.hideUTModal()
   }
 
   // hide modal when clicking ESC
